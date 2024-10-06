@@ -19,3 +19,7 @@ val light_onSurface = Color(0xFF000000)
 
 val LightGreen = Color(0xFF31B057)
 val LightGray = Color(0xFF929292)
+
+val LightGray_Simmer = Color(0xFFD7D7D7)
+val ErrorBtn = Color(0xFF00ACC1)
+val ClickBtn = Color(0xFF283377)

@@ -1,6 +1,7 @@
 package com.samy.showrepo.presentation.navigation
 
 const val REPO_DETAILS_SCREEN = "repo_details_screen"
+const val ISSUE_SCREEN = "issue_screen"
 const val OWNER_ARGUMENT_KEY = "owner_key"
 const val NAME_ARGUMENT_KEY = "name_key"
 sealed class Screens(val route: String) {
@@ -10,4 +11,5 @@ sealed class Screens(val route: String) {
             return "$REPO_DETAILS_SCREEN/$owner/$name"
         }
     }
+    data object IssueScreen: Screens(ISSUE_SCREEN)
 }

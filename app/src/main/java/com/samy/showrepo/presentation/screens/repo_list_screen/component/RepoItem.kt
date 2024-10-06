@@ -24,20 +24,21 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.samy.showrepo.R
+import com.samy.showrepo.presentation.theme.OrangeGitHubProjectShowRepoTheme
 
 @Composable
-fun RepoItem() {
+fun RepoItem(onItemClick: () -> Unit = {}) {
     val imageCrossFadeAnimationDuration = 1000
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 16.dp)
+            .padding(top = 8.dp)
             .background(
                 color = MaterialTheme.colorScheme.surface,
                 shape = MaterialTheme.shapes.medium
             )
             .clickable {
-
+                onItemClick()
             }
     ) {
         Image(
@@ -60,8 +61,14 @@ fun RepoItem() {
             Modifier.padding(12.dp)
         ) {
             Row {
-                Text(text = "Title", modifier = Modifier.weight(1f))
-                Text(text = "Title")
+                Text(
+                    text = "Title",
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.weight(1f)
+                )
+                Text(text = "Open",
+                        style = MaterialTheme.typography.bodyMedium,
+                )
                 Icon(
                     painter = painterResource(R.drawable.ic_star),
                     contentDescription = null,
@@ -70,10 +77,13 @@ fun RepoItem() {
                 )
             }
 
-            Text("RepoOwner", color = MaterialTheme.colorScheme.onSurface)
+            Text("RepoOwner",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface)
             Text(
                 "Description ;alksdfjlk ;as kasdjf;klasjf kasjf;lkasdjf; as;jdfkl;asj; kal;sjdfk;as lkajsdf lkjas ;laskjdf lkasdjf asldfj;l aklsdfj; lka alsdjflk;alskdjkfa;ksld seif seif seif",
                 color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(top = 12.dp),
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis
@@ -86,7 +96,7 @@ fun RepoItem() {
 @Preview
 @Composable
 private fun PreviewRepoItem() {
-    //  ODCGithubRepoAppTheme {
-    RepoItem()
-    // }
+    OrangeGitHubProjectShowRepoTheme {
+        RepoItem()
+    }
 }

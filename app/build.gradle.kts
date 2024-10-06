@@ -95,7 +95,8 @@ dependencies {
     implementation(libs.datastore)
     implementation(libs.lottie.compose)
 
-    // to change status bar configuration
-    implementation (libs.accompanist.systemuicontroller)
+
+    //simmer
+    implementation (libs.accompanist.placeholder.material)
 
 }

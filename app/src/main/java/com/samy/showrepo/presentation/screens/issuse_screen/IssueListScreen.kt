@@ -1,4 +1,4 @@
-package com.samy.showrepo.presentation.screens.repo_list_screen
+package com.samy.showrepo.presentation.screens.issuse_screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
@@ -23,16 +23,16 @@ import com.samy.showrepo.R
 import com.samy.showrepo.presentation.common_component.AppBar
 import com.samy.showrepo.presentation.common_component.ErrorScreen
 import com.samy.showrepo.presentation.common_component.ShimmerList
-import com.samy.showrepo.presentation.navigation.Screens
+import com.samy.showrepo.presentation.screens.issuse_screen.component.IssueItem
 import com.samy.showrepo.presentation.screens.repo_list_screen.component.RepoItem
 import com.samy.showrepo.presentation.theme.OrangeGitHubProjectShowRepoTheme
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RepoListScreen(
-    modifier: Modifier = Modifier,
+fun IssueListScreen(
     navController: NavController,
+    modifier: Modifier = Modifier,
 ) {
     Scaffold(
         modifier = modifier
@@ -40,8 +40,12 @@ fun RepoListScreen(
             .background(MaterialTheme.colorScheme.background),
         topBar = {
             AppBar(
-                title = R.string.screen_repo_list_title,
-                showBackButton = false
+                title = R.string.issues_app_bar_title,
+                showBackButton = true,
+                onBackButtonClicked = {
+                    navController.popBackStack()
+
+                }
             )
         }
     ) { innerPadding ->
@@ -50,8 +54,8 @@ fun RepoListScreen(
 
         LaunchedEffect(Unit) {
             delay(2 * 1000)
-            isLoading = 2
-            delay(2 * 1000)
+//            isLoading = 2
+//            delay(2 * 1000)
             isLoading = 3
         }
 
@@ -60,12 +64,12 @@ fun RepoListScreen(
                 ShimmerList(innerPadding)
             }
 
-            2 -> {
-                ErrorScreen(innerPadding)
-            }
+//            2 -> {
+//                ErrorScreen(innerPadding)
+//            }
 
             else -> {
-                RepoList(innerPadding, navController)
+                IssueList(innerPadding)
             }
         }
 
@@ -74,7 +78,7 @@ fun RepoListScreen(
 }
 
 @Composable
-fun RepoList(innerPadding: PaddingValues, navController: NavController) {
+fun IssueList(innerPadding: PaddingValues) {
     LazyColumn(
         Modifier
             .padding(innerPadding)
@@ -82,19 +86,16 @@ fun RepoList(innerPadding: PaddingValues, navController: NavController) {
             .padding(bottom = 16.dp)
     ) {
         items(listOf("Repo1", "Repo2", "Repo3", "Repo4", "Repo5")) { repoItem ->
-            RepoItem(onItemClick = {
-                navController.navigate(Screens.RepoDetailsScreen.passOwnerAndName("Mostafa","Samy"))
-            }
-            )
+            IssueItem()
         }
     }
 }
 
 @Preview
 @Composable
-private fun PreviewRepoListScreen() {
+private fun PreviewIssueListScreen() {
     OrangeGitHubProjectShowRepoTheme {
-//        RepoListScreen()
+//        IssueListScreen()
     }
 }
 

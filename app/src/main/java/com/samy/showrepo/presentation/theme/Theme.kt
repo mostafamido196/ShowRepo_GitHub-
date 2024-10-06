@@ -10,23 +10,11 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.samy.showrepo.presentation.theme.light_background
-import com.samy.showrepo.presentation.theme.light_error
-import com.samy.showrepo.presentation.theme.light_onBackground
-import com.samy.showrepo.presentation.theme.light_onError
-import com.samy.showrepo.presentation.theme.light_onPrimary
-import com.samy.showrepo.presentation.theme.light_onSecondary
-import com.samy.showrepo.presentation.theme.light_onSurface
-import com.samy.showrepo.presentation.theme.light_primary
-import com.samy.showrepo.presentation.theme.light_secondary
-import com.samy.showrepo.presentation.theme.light_surface
 
 private val LightColorScheme = lightColorScheme(
     primary = light_primary,
@@ -90,19 +78,6 @@ fun OrangeGitHubProjectShowRepoTheme(
 
 @Composable
 fun SetStatusBarStyle() {
-    val systemUiController = rememberSystemUiController()
-
-    if (isSystemInDarkTheme()) {
-        systemUiController.setStatusBarColor(
-            color = Color.Black,   // Dark mode status bar color
-            darkIcons = false      // Light icons for dark background
-        )
-    } else {
-        systemUiController.setStatusBarColor(
-            color = Color.White,   // Light mode status bar color
-            darkIcons = true       // Dark icons for light background
-        )
-    }
 }
 
 @Preview(

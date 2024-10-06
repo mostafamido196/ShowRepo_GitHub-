@@ -3,15 +3,14 @@ package com.samy.showrepo.presentation.navigation
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.samy.showrepo.presentation.screens.detail_screen.DetailScreen
+import com.samy.showrepo.presentation.screens.issuse_screen.IssueListScreen
 import com.samy.showrepo.presentation.screens.repo_list_screen.RepoListScreen
-import com.samy.showrepo.presentation.theme.OrangeGitHubProjectShowRepoTheme
-import com.samy.showrepo.presentation.theme.SetStatusBarStyle
 
 
 @Composable
@@ -24,10 +23,7 @@ fun AppNavHost(
         startDestination = Screens.RepoListScreen.route
     ) {
         composable(route = Screens.RepoListScreen.route) {
-            RepoListScreen()
-           // LaunchedEffect(Unit) {
-//                navController.navigate(Screens.RepoDetailsScreen.passOwnerAndName("Seif", "Kotlin"))
-           // }
+            RepoListScreen(navController = navController)
         }
 
         composable(
@@ -46,8 +42,13 @@ fun AppNavHost(
             LaunchedEffect(Unit) {
                 Log.d("Details", "owner:$owner, name: $name")
             }
+            DetailScreen(navController,name.toString(),owner.toString())
             // repo details screen
         }
+        composable(route = Screens.IssueScreen.route) {
+            IssueListScreen(navController)
+        }
+
 
     }
 
